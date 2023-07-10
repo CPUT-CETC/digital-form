@@ -1,0 +1,59 @@
+section{
+    margin-top: 3% !important;
+}
+
+.col{
+    text-align: left;
+}
+
+.my-grid-col-rows{
+    width: 100% !important;
+}
+
+.col-form-label span{
+    color: red;
+    font-weight: 700;
+}
+
+.my-radios{
+    margin-bottom: 1% !important;
+}
+
+#my-grid-col-rows-half{
+    width: 50% !important;
+}
+
+h1, .accordion-header {
+    font-size: 22px !important;
+    font-weight: bolder !important;
+}
+
+h2{
+    font-size: 19px !important;
+    font-weight: bolder !important;
+}
+
+h3, .accordion-header {
+    font-size: 17px !important;
+    font-weight: bolder !important;
+}
+
+h4, .accordion-header {
+    font-size: 16px !important;
+    font-weight: bolder !important;
+}
+
+h5, .accordion-header {
+    font-size: 14px !important;
+    font-weight: bolder !important;
+}
+
+h6, .accordion-header {
+    font-size: 12px !important;
+    font-weight: bolder !important;
+}
+
+.accordion-header button{
+    font-size: 17px !important;
+    font-weight: bold !important;
+}
