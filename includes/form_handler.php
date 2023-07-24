@@ -2,6 +2,9 @@
 
 include("FileUploaderClass.php");
 
+//Please insert the config file's new path.
+include("config.php");
+
 if (isset($_POST["Submit"]))
 {
     $FormHandler = new FormHandler();
@@ -12,25 +15,20 @@ if (isset($_POST["Submit"]))
 
 class FormHandler
 {
-    private $Password;
     private $Conn;
-    private $ServerName;
-    private $Username;
-    private $DbName;
+    private $DNS;
     private $FileHandler;
     private const uploadsFilePath = ".\\id_uploads\\";
 
     function __construct()
     {
-        $this->ServerName = "mysql:dbname=TrainingDevelopment;host=localhost";
-        $this->Username = "root";
-        $this->Password = "";
+        $this->DNS = "mysql:dbname=" . DB_NAME . "; host=" . DB_HOST . ";";
 
         try {
             $this->Conn = new PDO(
-                $this->ServerName,
-                $this->Username,
-                $this->Password
+                $this->DNS,
+                DB_USERNAME,
+                DB_PASSWORD
             );
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -70,29 +68,6 @@ class FormHandler
     public function SaveUploadedFile($file) : void
     {
         FileUploader::upload_file($file, FormHandler::uploadsFilePath);
-        /*
-        //$isDirCreated = mkdir(FormHandler::uploadsFilePath, 0722, true);
-        if ($file['type'] == "image/jpeg" || $file['type'] == "image/jpg"
-            || $file['type'] == "image/jfif" || $file['type'] == "image/png"
-            || $file['type'] == "image/gif" || $file['type'] == "application/pdf") 
-        {
-            if (!(move_uploaded_file($file["tmp_name"], FormHandler::uploadsFilePath))) 
-            {
-                // Debugging purposes
-                $error = $file['error'];
-                header("Location: index.php?fatal_error=file#failed_to_upload_document . $error");
-                exit();
-            }
-        }
-        else {
-            header("Location: index.php?error=file#invalid_file_type" . $file['type']);
-            exit();
-        }
-        // if(!$isDirCreated)
-        // {
-        //     header("Location: index.php?error=failed_to_create_directory" . $file['type']);  
-        //     exit(); 
-        // } */
     }
 
     private function TryCreateTable(): string
