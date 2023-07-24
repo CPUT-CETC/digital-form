@@ -1,3 +1,4 @@
+<?php include_once("includes/form_handler.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,7 @@
                     Card or Driver’s Licence)</li>
             </ul>
         </header>
-        <form action="">
+        <form method="post" action="" enctype="multipart/form-data" onsubmit="submitForm()">
             <section>
                 <!-- Form - Section A -->
                 <h3>SECTION A: BENEFICIARY PERSONAL INFORMATION</h3>
@@ -43,18 +44,18 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <select name="titles" id="inputTitles" class="form-control"
+                                    <select name="Title" id="inputTitles" class="form-control"
                                         aria-labelledby="titlesHelpInline">
                                         <option value="">Choose...</option>
-                                        <option value="">Advocate</option>
-                                        <option value="">Dr.</option>
-                                        <option value="">Hon.</option>
-                                        <option value="">Miss.</option>
-                                        <option value="">Mr.</option>
-                                        <option value="">Mrs.</option>
-                                        <option value="">Ms.</option>
-                                        <option value="">Professor</option>
-                                        <option value="">Rev.</option>
+                                        <option value="Advocate">Advocate</option>
+                                        <option value="Dr.">Dr.</option>
+                                        <option value="Hon.">Hon.</option>
+                                        <option value="Miss.">Miss.</option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Ms.">Ms.</option>
+                                        <option value="Professor">Professor</option>
+                                        <option value="Rev.">Rev.</option>
                                     </select>
                                 </div>
                             </div>
@@ -66,7 +67,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputInitials" class="form-control"
+                                    <input name="Initials" type="text" id="inputInitials" class="form-control"
                                         aria-labelledby="initialsHelpInline" required>
                                 </div>
                             </div>
@@ -78,7 +79,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputIdNumber" class="form-control"
+                                    <input name="IdNumber" type="text" id="inputIdNumber" class="form-control"
                                         aria-labelledby="idNumberHelpInline" required>
                                 </div>
                             </div>
@@ -88,13 +89,13 @@
                     <!-- Second Row Grid -->
                     <div class="row">
                         <div class="col">
-                            <label for="inputTitles" class="col-form-label">
+                            <label for="inputFirstName" class="col-form-label">
                                 First Name
                                 <span>*</span>
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputFirstName" class="form-control"
+                                    <input name="FirstName" type="text" id="inputFirstName" class="form-control"
                                         aria-labelledby="firstNameHelpInline" required>
                                 </div>
                             </div>
@@ -105,7 +106,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputMidName" class="form-control"
+                                    <input name="MiddleName" type="text" id="inputMidName" class="form-control"
                                         aria-labelledby="midnameHelpInline">
                                 </div>
                             </div>
@@ -117,7 +118,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputSurname" class="form-control"
+                                    <input name="Surname" type="text" id="inputSurname" class="form-control"
                                         aria-labelledby="surnameHelpInline" required>
                                 </div>
                             </div>
@@ -127,7 +128,7 @@
                     <!-- Third Row -->
                     <div class="row">
                         <div class="col">
-                            <label for="inputTitles" class="col-form-label">
+                            <label for="inputBirthdate" class="col-form-label">
                                 Date of Birth
                                 <span>*</span>
                             </label>
@@ -135,7 +136,7 @@
                                 <div class="col-auto my-grid-col-rows">
                                     <div class="input-group">
                                         <span class="input-group-text" id="dateOfBirth">example: 1980-06-21</span>
-                                        <input type="text" class="form-control" id="basic-url"
+                                        <input name="BirthDate" type="date" class="form-control" id="basic-url"
                                             aria-describedby="dateOfBirth basic-addon4">
                                     </div>
                                 </div>
@@ -149,7 +150,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputAge" class="form-control"
+                                    <input name="Age" type="text" id="inputAge" class="form-control"
                                         aria-labelledby="ageHelpInline" required>
                                 </div>
                             </div>
@@ -159,13 +160,13 @@
                     <!-- Fourth Row -->
                     <div class="row">
                         <div class="col">
-                            <label for="inputAge" class="col-form-label">
+                            <label for="occupation" class="col-form-label">
                                 Occupation
                                 <span>*</span>
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows" id="my-grid-col-rows-half">
-                                    <input type="text" id="inputOccupation" class="form-control"
+                                    <input name="Occupation" type="text" id="inputOccupation" class="form-control"
                                         aria-labelledby="occupationHelpInline" required>
                                 </div>
                             </div>
@@ -180,7 +181,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputTelephone" class="form-control"
+                                    <input name="Telephone" type="text" id="inputTelephone" class="form-control"
                                         aria-labelledby="telephoneHelpInline">
                                 </div>
                             </div>
@@ -193,7 +194,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputCellphone" class="form-control"
+                                    <input name="Cellphone" type="text" id="inputCellphone" class="form-control"
                                         aria-labelledby="cellphoneHelpInline" required>
                                 </div>
                             </div>
@@ -208,7 +209,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputFax" class="form-control"
+                                    <input name="Fax" type="text" id="inputFax" class="form-control"
                                         aria-labelledby="faxHelpInline">
                                 </div>
                             </div>
@@ -221,7 +222,7 @@
                             </label>
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto my-grid-col-rows">
-                                    <input type="text" id="inputEmail" class="form-control"
+                                    <input name="Email" type="email" id="inputEmail" class="form-control"
                                         aria-labelledby="emailHelpInline" required>
                                 </div>
                             </div>
@@ -240,7 +241,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="inputName&Surname" class="form-control"
+                                <input name="NameAndSurname" type="text" id="inputName&Surname" class="form-control"
                                     aria-labelledby="name&SurnameHelpInline" required>
                             </div>
                         </div>
@@ -253,7 +254,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="inputRelationship" class="form-control"
+                                <input name="Relationship" type="text" id="inputRelationship" class="form-control"
                                     aria-labelledby="relationshipHelpInline" required>
                             </div>
                         </div>
@@ -268,8 +269,8 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows" id="my-grid-col-rows-half">
-                                <input type="text" id="inputTelephone&MobileNumber" class="form-control"
-                                    aria-labelledby="telephone&MobileNumberHelpInline" required>
+                                <input name="TelephoneAndMobileNumber" type="text" id="inputTelephone&MobileNumber"
+                                    class="form-control" aria-labelledby="telephone&MobileNumberHelpInline" required>
                             </div>
                         </div>
                     </div>
@@ -287,7 +288,7 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="African"
+                                <input name="Race" class="form-check-input mt-0" type="radio" value="African"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="African" type="text" class="form-control"
@@ -296,7 +297,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Coloured"
+                                <input name="Race" class="form-check-input mt-0" type="radio" value="Coloured"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Coloured" type="text" class="form-control"
@@ -305,7 +306,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Indian"
+                                <input name="Race" class="form-check-input mt-0" type="radio" value="Indian"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Indian" type="text" class="form-control"
@@ -314,7 +315,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="White"
+                                <input name="Race" class="form-check-input mt-0" type="radio" value="White"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="White" type="text" class="form-control"
@@ -331,7 +332,7 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="female"
+                                <input name="Gender" class="form-check-input mt-0" type="radio" value="female"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Female" type="text" class="form-control"
@@ -340,7 +341,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="male"
+                                <input name="Gender" class="form-check-input mt-0" type="radio" value="male"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Male" type="text" class="form-control"
@@ -357,7 +358,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <select name="titles" id="inputTitles" class="form-control"
+                                <select name="HomeLanguage" id="inputTitles" class="form-control"
                                     aria-labelledby="titlesHelpInline">
                                     <option value="">Choose...</option>
                                     <option value="Afrikaans">Afrikaans</option>
@@ -390,7 +391,7 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Yes"
+                                <input id="IsDisabled" name="IsDisabled" class="form-check-input mt-0" type="radio" value="Yes"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
@@ -399,7 +400,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="No"
+                                <input id="IsDisabledNo" name="IsDisabled" class="form-check-input mt-0" type="radio" value="No"
                                     aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
@@ -412,7 +413,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto" style="width: 100%;">
-                                <input type="text" id="inputDisNature" class="form-control"
+                                <input id="DisabilityNature" name="DisabilityNature" type="text" id="inputDisNature" class="form-control"
                                     aria-labelledby="disnatureHelpInline" required>
                             </div>
                         </div>
@@ -427,8 +428,8 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Yes"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsEyesightDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="Yes" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -436,8 +437,8 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="No"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsEyesightDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="No" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -450,8 +451,8 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Yes"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsHearingDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="Yes" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -459,8 +460,8 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="No"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsHearingDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="No" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -476,8 +477,8 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Yes"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsWalkingDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="Yes" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -485,8 +486,8 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="No"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsWalkingDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="No" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -499,8 +500,8 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="Yes"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsRecallectionDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="Yes" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -508,8 +509,8 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="radio" value="No"
-                                    aria-label="Radio button for following text input">
+                                <input name="IsRecallectionDisadvatanged" class="form-check-input mt-0" type="radio"
+                                    value="No" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
                                 aria-label="Text input with radio button">
@@ -529,7 +530,7 @@
                         </label>
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input name="isSouthAfricanCitizen" class="form-check-input mt-0" type="radio"
+                                <input id="IsSouthAfricanCitizen" name="IsSouthAfricanCitizen" class="form-check-input mt-0" type="radio"
                                     value="Yes" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="Yes" type="text" class="form-control"
@@ -538,7 +539,7 @@
 
                         <div class="input-group my-radios" id="my-grid-col-rows-half">
                             <div class="input-group-text">
-                                <input name="isSouthAfricanCitizen" class="form-check-input mt-0" type="radio"
+                                <input id="IsSouthAfricanCitizenNo" name="IsSouthAfricanCitizen" class="form-check-input mt-0" type="radio"
                                     value="No" aria-label="Radio button for following text input">
                             </div>
                             <input readonly value="No" type="text" class="form-control"
@@ -551,7 +552,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto" style="width: 100%;">
-                                <input type="text" id="inputDisNature" class="form-control"
+                                <input id="BirthCountry" name="BirthCountry" type="text" id="inputDisNature" class="form-control"
                                     aria-labelledby="disnatureHelpInline" required>
                             </div>
                         </div>
@@ -568,7 +569,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <select name="province" id="inputProvince" class="form-control"
+                                <select name="Province" id="inputProvince" class="form-control"
                                     aria-labelledby="titlesHelpInline">
                                     <option value="">Choose...</option>
                                     <option value="">Eastern Cape</option>
@@ -591,7 +592,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="highSchool" class="form-control"
+                                <input name="HighSchoolName" type="text" id="highSchool" class="form-control"
                                     aria-labelledby="initialsHelpInline" required>
                             </div>
                         </div>
@@ -606,7 +607,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="schoolYear" class="form-control"
+                                <input name="LastSchoolYear" type="text" id="schoolYear" class="form-control"
                                     aria-labelledby="initialsHelpInline" required>
                             </div>
                         </div>
@@ -619,13 +620,13 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <select name="province" id="inputProvince" class="form-control"
+                                <select name="TeachingPhase" id="inputProvince" class="form-control"
                                     aria-labelledby="titlesHelpInline">
                                     <option value="">Choose...</option>
-                                    <option value="">Foundation Phase</option>
-                                    <option value="">Intermediate Phase</option>
-                                    <option value="">Senior Phase</option>
-                                    <option value="">FET Phase</option>
+                                    <option value="Foundation Phase">Foundation Phase</option>
+                                    <option value="Intermediate Phase">Intermediate Phase</option>
+                                    <option value="Senior Phase">Senior Phase</option>
+                                    <option value="FET Phase">FET Phase</option>
                                 </select>
                             </div>
                         </div>
@@ -640,7 +641,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="residenceArea" class="form-control"
+                                <input name="LearnerResidentialArea" type="text" id="residenceArea" class="form-control"
                                     aria-labelledby="initialsHelpInline" required>
                             </div>
                         </div>
@@ -658,18 +659,18 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <select name="trainingProvince" id="trainingProvince" class="form-control"
+                                <select name="TrainingProvince" id="trainingProvince" class="form-control"
                                     aria-labelledby="titlesHelpInline">
                                     <option value="">Choose...</option>
-                                    <option value="">Eastern Cape</option>
-                                    <option value="">Free State</option>
-                                    <option value="">Gauteng</option>
-                                    <option value="">Kwa-Zulu Natal</option>
-                                    <option value="">Limpopo</option>
-                                    <option value="">Mpumalanga</option>
-                                    <option value="">Northern Cape</option>
-                                    <option value="">North West</option>
-                                    <option value="">Western Cape</option>
+                                    <option value="Eastern Cape">Eastern Cape</option>
+                                    <option value="Free State">Free State</option>
+                                    <option value="Gauteng">Gauteng</option>
+                                    <option value="Kwa-Zulu Natal">Kwa-Zulu Natal</option>
+                                    <option value="Limpopo">Limpopo</option>
+                                    <option value="Mpumalanga">Mpumalanga</option>
+                                    <option value="Northern Cape">Northern Cape</option>
+                                    <option value="North West">North West</option>
+                                    <option value="Western Cape">Western Cape</option>
                                 </select>
                             </div>
                         </div>
@@ -696,7 +697,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input type="text" id="residenceArea" class="form-control"
+                                <input name="LocalMunicipality" type="text" id="residenceArea" class="form-control"
                                     aria-labelledby="initialsHelpInline" required>
                             </div>
                         </div>
@@ -775,7 +776,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <select name="trainingProvince" id="trainingProvince" class="form-control"
+                                <select name="AreaType" id="trainingProvince" class="form-control"
                                     aria-labelledby="titlesHelpInline">
                                     <option value="">Choose...</option>
                                     <option value="Rural">Rural</option>
@@ -803,8 +804,8 @@
 
             <section>
                 <div class="form-check">
-                    <input name="IsPostalAddressSameAsResidence" class="form-check-input" type="checkbox" value=""
-                        id="postalAddressCheck">
+                    <input name="IsPostalAddressSameAsResidence" class="form-check-input" type="checkbox" value="false"
+                        id="isPostalAddressSameAsResidence">
                     <label class="form-check-label" for="flexCheckDefault">
                         Same as above address?
                     </label>
@@ -868,7 +869,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input name="Employer" type="text" id="postalAreaCode" class="form-control"
+                                <input name="EmployerName" type="text" id="employerName" class="form-control"
                                     value="DEPARTMENT OF BASIC EDUCATION" aria-labelledby="initialsHelpInline">
                             </div>
                         </div>
@@ -881,7 +882,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input name="Employer" type="text" id="postalAreaCode" class="form-control"
+                                <input name="Principal" type="text" id="principal" class="form-control"
                                     aria-labelledby="initialsHelpInline" required>
                             </div>
                         </div>
@@ -895,8 +896,8 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input name="Employer" type="text" id="postalAreaCode" class="form-control"
-                                    value="NL00015647" aria-labelledby="postalAreaCode" disabled readonly>
+                                <input name="EmployeeSDLNumber" type="text" id="employeeSDLNumber" class="form-control"
+                                    value="NL00015647" aria-labelledby="postalAreaCode" readonly readonly>
                             </div>
                         </div>
                     </div>
@@ -923,7 +924,7 @@
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
                                 <input name="EmployerFax" type="text" id="employerFax" class="form-control"
-                                    value="NL00015647" aria-labelledby="employerFax" disabled readonly>
+                                    value="NL00015647" aria-labelledby="employerFax" readonly readonly>
                             </div>
                         </div>
                     </div>
@@ -935,7 +936,7 @@
                         </label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto my-grid-col-rows">
-                                <input name="EmployerEmail" type="text" id="employerEmail" class="form-control"
+                                <input name="EmployerEmail" type="email" id="employerEmail" class="form-control"
                                     aria-labelledby="employerEmail" required>
                             </div>
                         </div>
@@ -1094,7 +1095,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderName" type="text" id="trainingProviderName"
-                                                value="NATIONAL EDUCATION COLLABORATION TRUST" disabled
+                                                value="NATIONAL EDUCATION COLLABORATION TRUST" readonly
                                                 class="form-control" aria-labelledby="trainingProviderName">
                                         </div>
                                     </div>
@@ -1107,7 +1108,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderNameAndSurnameContactPerson" type="text"
-                                                id="trainingProviderName" value="DR JOHN THURLOW" disabled
+                                                id="trainingProviderName" value="DR JOHN THURLOW" readonly
                                                 class="form-control" aria-labelledby="trainingProviderName">
                                         </div>
                                     </div>
@@ -1122,7 +1123,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderName" type="text" id="trainingProviderName"
-                                                value="BLOCK D" disabled class="form-control"
+                                                value="BLOCK D" readonly class="form-control"
                                                 aria-labelledby="trainingProviderName">
                                         </div>
                                     </div>
@@ -1135,7 +1136,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderStreetName" type="text"
-                                                id="trainingProviderStreetName" value=" WEST AVENUE" disabled
+                                                id="trainingProviderStreetName" value="WEST AVENUE" readonly
                                                 class="form-control" aria-labelledby="trainingProviderStreetName">
                                         </div>
                                     </div>
@@ -1150,7 +1151,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderSuburb" type="text" id="trainingProviderSuburb"
-                                                value="CENTURION" disabled class="form-control"
+                                                value="CENTURION" readonly class="form-control"
                                                 aria-labelledby="trainingProviderSuburb">
                                         </div>
                                     </div>
@@ -1163,7 +1164,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderCity" type="text" id="trainingProviderCity"
-                                                value="TSHWANE" disabled class="form-control"
+                                                value="TSHWANE" readonly class="form-control"
                                                 aria-labelledby="trainingProviderCity">
                                         </div>
                                     </div>
@@ -1178,7 +1179,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderDistrictMunicipality" type="text"
-                                                id="trainingProviderDistrictMunicipality" value="TSHWANE" disabled
+                                                id="trainingProviderDistrictMunicipality" value="TSHWANE" readonly
                                                 class="form-control"
                                                 aria-labelledby="trainingProviderDistrictMunicipality">
                                         </div>
@@ -1192,7 +1193,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderLocalMunicipality" type="text"
-                                                id="trainingProviderLocalMunicipality" value="TSHWANE" disabled
+                                                id="trainingProviderLocalMunicipality" value="TSHWANE" readonly
                                                 class="form-control"
                                                 aria-labelledby="trainingProviderLocalMunicipality">
                                         </div>
@@ -1208,7 +1209,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderTelephone" type="text"
-                                                id="trainingProviderTelephone" value="(012) 752 6200" disabled
+                                                id="trainingProviderTelephone" value="(012) 752 6200" readonly
                                                 class="form-control" aria-labelledby="trainingProviderTelephone">
                                         </div>
                                     </div>
@@ -1221,7 +1222,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderCellphone" type="text"
-                                                id="trainingProviderCellphone" value="(082) 854 5543" disabled
+                                                id="trainingProviderCellphone" value="(082) 854 5543" readonly
                                                 class="form-control" aria-labelledby="trainingProviderCellphone">
                                         </div>
                                     </div>
@@ -1236,7 +1237,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderFax" type="text" id="trainingProviderFax"
-                                                value="(012) 752 6200" disabled class="form-control"
+                                                value="(012) 752 6200" readonly class="form-control"
                                                 aria-labelledby="trainingProviderFax">
                                         </div>
                                     </div>
@@ -1254,7 +1255,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderRegistrationNumber" type="text"
-                                                id="trainingProviderRegistrationNumber" value="" disabled
+                                                id="trainingProviderRegistrationNumber" value="" readonly
                                                 class="form-control"
                                                 aria-labelledby="trainingProviderRegistrationNumber">
                                         </div>
@@ -1268,7 +1269,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="TrainingProviderSDLNumber" type="text"
-                                                id="trainingProviderSDLNumber" value="L960784967" disabled
+                                                id="trainingProviderSDLNumber" value="L960784967" readonly
                                                 class="form-control" aria-labelledby="trainingProviderSDLNumber">
                                         </div>
                                     </div>
@@ -1302,7 +1303,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="ETDPSETAProgrammeNumber" type="text"
-                                                id="eTDPSETAProgrammeNumber" value="THREE (3)" disabled
+                                                id="eTDPSETAProgrammeNumber" value="THREE (3)" readonly
                                                 class="form-control" aria-labelledby="eTDPSETAProgrammeNumber">
                                         </div>
                                     </div>
@@ -1315,7 +1316,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="OutputIndicatorNumber" type="text" id="outputIndicatorNumber"
-                                                value="3.15" disabled class="form-control"
+                                                value="3.15" readonly class="form-control"
                                                 aria-labelledby="outputIndicatorNumber">
                                         </div>
                                     </div>
@@ -1330,7 +1331,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="CourseTitle" type="text" id="courseTitle"
-                                                value="Comprehension Across The Curriculum" disabled
+                                                value="Comprehension Across The Curriculum" readonly
                                                 class="form-control" aria-labelledby="courseTitle">
                                         </div>
                                     </div>
@@ -1342,14 +1343,14 @@
                                     </label>
                                     <div class="input-group my-radios" id="my-grid-col-rows-half">
                                         <div class="input-group-text">
-                                            <input name="isPartQualification" class="form-check-input mt-0" type="radio"
+                                            <input name="IsPartQualification" class="form-check-input mt-0" type="radio"
                                                 value="Yes" checked aria-label="isPartQualification">
                                         </div>
                                         <input readonly value="Yes" type="text" class="form-control"
                                             aria-label="Text input with radio button">
 
                                         <div class="input-group-text">
-                                            <input name="isPartQualification" class="form-check-input mt-0" type="radio"
+                                            <input name="IsPartQualification" class="form-check-input mt-0" type="radio"
                                                 value="No" aria-label="Radio button for following text input">
                                         </div>
                                         <input readonly value="No" type="text" class="form-control"
@@ -1366,7 +1367,7 @@
                                     </label>
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
-                                            <input name="SAQAIDCode" type="text" id="sAQAIDCode" value="" disabled
+                                            <input name="SAQAIDCode" type="text" id="sAQAIDCode" value="" readonly
                                                 class="form-control" aria-labelledby="sAQAIDCode">
                                         </div>
                                     </div>
@@ -1378,7 +1379,7 @@
                                     </label>
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
-                                            <input name="NQFLevel" type="text" id="nQFLevel" value="5" disabled
+                                            <input name="NQFLevel" type="text" id="nQFLevel" value="5" readonly
                                                 class="form-control" aria-labelledby="nQFLevel">
                                         </div>
                                     </div>
@@ -1393,7 +1394,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="NumberOfCredits" type="text" id="numberOfCredits" value="15"
-                                                disabled class="form-control" aria-labelledby="numberOfCredits">
+                                                readonly class="form-control" aria-labelledby="numberOfCredits">
                                         </div>
                                     </div>
                                 </div>
@@ -1404,14 +1405,14 @@
                                     </label>
                                     <div class="input-group my-radios" id="my-grid-col-rows-half">
                                         <div class="input-group-text">
-                                            <input name="isArtisanRelated" class="form-check-input mt-0" type="radio"
+                                            <input name="IsArtisanRelated" class="form-check-input mt-0" type="radio"
                                                 value="Yes" checked aria-label="isArtisanRelated">
                                         </div>
                                         <input readonly value="Yes" type="text" class="form-control"
                                             aria-label="Text input with radio button">
 
                                         <div class="input-group-text">
-                                            <input name="isArtisanRelated" class="form-check-input mt-0" type="radio"
+                                            <input name="IsArtisanRelated" class="form-check-input mt-0" type="radio"
                                                 value="No" aria-label="isArtisanRelated">
                                         </div>
                                         <input readonly value="No" type="text" class="form-control"
@@ -1429,7 +1430,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="ProgramDuration" type="text" id="programDuration" value="6HRS"
-                                                disabled class="form-control" aria-labelledby="programDuration">
+                                                readonly class="form-control" aria-labelledby="programDuration">
                                         </div>
                                     </div>
                                 </div>
@@ -1441,7 +1442,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="ModeOfDelivery" type="text" id="modeOfDelivery" value="ONLINE"
-                                                disabled class="form-control" aria-labelledby="modeOfDelivery">
+                                                readonly class="form-control" aria-labelledby="modeOfDelivery">
                                         </div>
                                     </div>
                                 </div>
@@ -1455,7 +1456,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="DateOfEnrolmentOntoProgramme" type="date"
-                                                id="dateOfEnrolmentOntoProgramme" value="2021-11-01" disabled
+                                                id="dateOfEnrolmentOntoProgramme" value="2021-11-01" readonly
                                                 class="form-control" aria-labelledby="dateOfEnrolmentOntoProgramme">
                                         </div>
                                     </div>
@@ -1468,7 +1469,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto my-grid-col-rows">
                                             <input name="EstimatedDateOfCompletionOfTheProgramme" type="date"
-                                                id="estimatedDateOfCompletionOfTheProgramme" value="2023-03-31" disabled
+                                                id="estimatedDateOfCompletionOfTheProgramme" value="2023-03-31" readonly
                                                 class="form-control"
                                                 aria-labelledby="estimatedDateOfCompletionOfTheProgramme">
                                         </div>
@@ -1488,7 +1489,7 @@
                             the
                             'choose files' button.</label>
                     </h4>
-                    <input class="form-control form-control-lg" id="idDoc" type="file">
+                    <input name="IdDocument" class="form-control form-control-lg" id="idDoc" type="file">
                 </div>
             </section>
 
@@ -1498,7 +1499,7 @@
 
                 <div class="form-check">
                     <h6>The beneficiary</h6>
-                    <input name="IsCommittedToAttend" class="form-check-input" type="checkbox" value=""
+                    <input name="IsCommittedToAttend" class="form-check-input" type="checkbox" value="Yes"
                         id="isCommittedToAttend">
                     <label class="form-check-label" for="flexCheckDefault">
                         I commit to attend the scheduled training and meet all the requirements of the programme.
@@ -1527,10 +1528,13 @@
                 </p>
             </section>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
+
+    <script src="js/main.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
