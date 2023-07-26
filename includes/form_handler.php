@@ -1,5 +1,9 @@
 <?php
 
+// error_reporting(E_ALL);
+// error_reporting(-1);
+// ini_set('error_reporting', E_ALL);
+
 include("FileUploaderClass.php");
 
 //Please insert the config file's new path.
@@ -67,6 +71,10 @@ class FormHandler
 
     public function SaveUploadedFile($file) : void
     {
+        if(!is_dir(FormHandler::uploadsFilePath))
+        {
+            mkdir(FormHandler::uploadsFilePath, 0777, true);
+        }
         FileUploader::upload_file($file, FormHandler::uploadsFilePath);
     }
 
